@@ -1,0 +1,43 @@
+---
+repository:
+  Ubuntu:
+    name: "deb https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable"
+    key: "https://download.docker.com/linux/ubuntu/gpg"
+  Debian:
+    name: "deb https://download.docker.com/linux/debian {{ansible_distribution_release}} stable"
+    key: "https://download.docker.com/linux/debian/gpg"
+  Raspbian:
+    name: "deb https://download.docker.com/linux/raspbian {{ansible_distribution_release}} stable"
+    key: "deb https://download.docker.com/linux/raspbian/gpg"
+  CentOS:
+    name: "https://download.docker.com/linux/centos/{{ansible_distribution_major_version}}/{{ansible_architecture}}/stable"
+    key: "https://download.docker.com/linux/centos/gpg"
+  Fedora:
+    name: "https://download.docker.com/linux/fedora/docker-ce.repo"
+    key: "https://download.docker.com/linux/fedora/gpg"
+common_packages:
+  docker_packages:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+debian_packages:
+  docker_requirements:
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - gnupg-agent
+  - software-properties-common
+  docker_python:
+  - python-docker
+  - python-pip
+  docker_python3:
+  - python3-docker
+  - python3-pip
+redhat_packages:
+  docker_python:
+  - epel-release
+  - python2-pip
+  - python-docker-py
+  - python-setuptools
+  docker_python3:
+  - python3-pip

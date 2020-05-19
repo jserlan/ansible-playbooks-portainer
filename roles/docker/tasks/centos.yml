@@ -1,0 +1,44 @@
+---
+- name: "Installing Docker requirements"
+  yum:
+    name:
+      - yum-utils
+    state: present
+
+- name: "Setting the official Docker's repository"
+  yum_repository:
+    name: docker-ce-stable
+    description: "Docker CE Stable - {{ ansible_architecture }}"
+    baseurl: "{{ repository[ansible_distribution].name }}"
+    enabled: yes
+    gpgcheck: yes
+    gpgkey: "{{ repository[ansible_distribution].key }}"
+
+- name: "Installing Docker packages"
+  yum:
+    name: "{{ common_packages.docker_packages }}"
+    enablerepo: docker-ce-stable
+    state: present
+
+- name: "Starting and enable the Docker service"
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: "Installing the Python3 package installer"
+  yum:
+    name:
+      - python3-pip
+    state: present
+  when: ansible_python.version.major == 3
+
+- name: "Installing the Python package installer"
+  yum:
+    name:
+      - epel-release
+      - python2-pip
+      - python-docker-py
+      - python-setuptools
+    state: present
+  when: ansible_python.version.major != 3

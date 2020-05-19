@@ -1,0 +1,39 @@
+---
+# Import the tasks file for installing Docker on Debian/Ubuntu
+- name: "Include Debian"
+  include_tasks: debian.yml
+  when: ansible_distribution == 'Debian'
+
+- name: "Include Ubuntu"
+  include_tasks: ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'
+
+# Import the tasks file for installing Docker on CentOS
+- name: "Include CentOS"
+  include_tasks: centos.yml
+  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version|int < 8
+
+# Import the tasks file for installing Docker on CentOS
+- name: "Include Fedora"
+  include_tasks: fedora.yml
+  when: ansible_distribution == 'Fedora'
+
+- name: "Installing Docker SDK for Python"
+  pip:
+    name: docker-py
+
+- name: "Checking Docker installation by running the hello-world image"
+  docker_container:
+    name: hello-world
+    image: hello-world
+    state: started
+
+- name: "Stopping container hello-world image"
+  docker_container:
+    name: hello-world
+    state: stopped
+
+- name: "Removing the container hello-world image"
+  docker_container:
+    name: hello-world
+    state: absent

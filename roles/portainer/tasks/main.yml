@@ -1,0 +1,19 @@
+---
+- name: "Creating the docker volume for data"
+  docker_volume:
+    name: portainer_data
+    state: present
+
+- name: "Stopping container portainer image"
+  docker_container:
+    name: portainer
+    image: portainer/portainer
+    detach: True
+    ports:
+      - "8000:8000"
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    restart_policy: always
+    state: started
