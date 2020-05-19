@@ -41,7 +41,7 @@ Playbook arguments :
 
 ## Configuration
 
-The service will be available on http://<your IP>:9000/
+The service will be available on http://\<your IP\>:9000/
 
 ## To do
 
