@@ -1,38 +1,20 @@
-Role Name
+Portainer
 =========
 
-A brief description of the role goes here.
-
-Requirements
-------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This role will help you to deploy a Portainer server on standalone host.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+The defaults/main.yml contains the defaults requiered  variables for the ports and volumes to deploy the Docker image. It also contains, the boolean variable "edge_agent" that will define if the installation should bind the TCP port used for the agent or not.
 
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+The vars/main.yml contains the specifics variables that will used whether if the host is a Windows instead of a Linux host, and the specifics value for the variable "ports" if we want to use EDGE agent later or not.
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+For exemple, you can call the role with the variable edge_agent set to True, if you don't need to use the EDGE agent, you can set the variable to False or simply omit.
 
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
-
-License
--------
-
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+         - { role: portainer, edge_agent: True }
