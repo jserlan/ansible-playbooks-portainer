@@ -7,5 +7,5 @@
       portainer: "9000"
   roles:
     - role: docker
-    - { role: portainer, edge_agent: True }
-    # - role: ufw
+    - { role: portainer, edge_agent: False }
+    - role: ufw
