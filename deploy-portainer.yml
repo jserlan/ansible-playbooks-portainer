@@ -1,11 +1,7 @@
 ---
 - name: "Deploying Docker with Portainer standalone"
   hosts: dedibox
-  vars:
-    timezone: "Europe/Paris"
-    public_ports:
-      portainer: "9000"
+
   roles:
     - role: docker
     - { role: portainer, edge_agent: False }
-    - role: ufw
