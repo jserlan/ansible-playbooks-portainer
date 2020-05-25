@@ -6,8 +6,7 @@ This playbook will deploy a Portainer installation for Docker
 
 ### Requirements :
 
-A Linux machine (or an other Debian OS based).
-A root user or at least an user with sudo privileges.
+A Linux machine and a root user or at least an user with sudo privileges.
 
 ### Files and folders description
 
