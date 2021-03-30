@@ -15,7 +15,7 @@
 - name: "Starting the Portainer Docker image"
   docker_container:
     name: portainer
-    image: portainer/portainer
+    image: portainer/portainer-ce
     detach: True
     ports: "{{ ports }}"
     volumes: "{{ volumes }}"
