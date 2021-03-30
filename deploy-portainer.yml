@@ -1,6 +1,6 @@
 ---
 - name: "Deploying Docker with Portainer standalone"
-  hosts: dedibox
+  hosts: all
 
   roles:
     - role: docker
