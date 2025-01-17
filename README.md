@@ -1,4 +1,4 @@
-# ansible-seedbox-server
+# ansible-playbook-portainer
 
 ## Description :
 
@@ -7,6 +7,7 @@ This playbook will deploy a Portainer installation for Docker
 ### Requirements :
 
 A Linux machine and a root user or at least an user with sudo privileges.
+A SSH server installed on the remote machine.
 
 ### Files and folders description
 
@@ -46,5 +47,5 @@ The service will be available on the URL `http://<your IP>:9000/`
 
 ## To do
 
-- Adding a SSL confugation with certbot and nginx
+- Adding a SSL configuration with certbot and nginx (or apache)
 - Adding UFW and fail2ban roles
